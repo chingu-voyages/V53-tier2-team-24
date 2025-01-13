@@ -37,7 +37,6 @@ coding!
  **Damilola Oshinowo - Scrum master** [GitHub](https://github.com/dami-boy) / [LinkedIn](https://linkedin.com/in/damilola-oshinowo)  
  **Ikram Maizi - Developer** [GitHub](https://github.com/ikrammaizi) / [LinkedIn](https://www.linkedin.com/in/ikram-maizi-6142011bb/)  
  **Anna Bowen - Developer** [GitHub](https://github.com/bowenanna) / [LinkedIn](https://www.linkedin.com/in/realannabowen/)   
+ **Dimitris - Developer** [GitHub](https://github.com/dimitriost1) / [LinkedIn](https://www.linkedin.com/in/dimitrios-t-0bb8aa257/)  
 - Teammate name - : [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)  
 
-   ...  
-**Dimitris - Developer** [GitHub](https://github.com/dimitriost1) / [LinkedIn](https://www.linkedin.com/in/dimitrios-t-0bb8aa257/)
