@@ -38,4 +38,4 @@ coding!
 - Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Dimitris #4: [GitHub](https://github.com/dimitriost1) / [LinkedIn](https://www.linkedin.com/in/dimitrios-t-0bb8aa257/))
