@@ -35,6 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Damilola Oshinowo #1: [GitHub](https://github.com/dami-boy) / [LinkedIn](https://linkedin.com/in/damilola-oshinowo)
+- Ikram Maizi - Developer: [GitHub](https://github.com/ikrammaizi) / [LinkedIn](https://www.linkedin.com/in/ikram-maizi-6142011bb/)
 - Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
    ...
