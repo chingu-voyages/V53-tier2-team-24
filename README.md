@@ -36,7 +36,7 @@ coding!
 
 - Damilola Oshinowo #1: [GitHub](https://github.com/dami-boy) / [LinkedIn](https://linkedin.com/in/damilola-oshinowo)
 - Ikram Maizi - Developer: [GitHub](https://github.com/ikrammaizi) / [LinkedIn](https://www.linkedin.com/in/ikram-maizi-6142011bb/)
-- Teammate name - Developer: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Teammate name - : [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
    ...
-- Dimitris #4: [GitHub](https://github.com/dimitriost1) / [LinkedIn](https://www.linkedin.com/in/dimitrios-t-0bb8aa257/)
+- Dimitris - Developer: [GitHub](https://github.com/dimitriost1) / [LinkedIn](https://www.linkedin.com/in/dimitrios-t-0bb8aa257/)
