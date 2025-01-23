@@ -73,7 +73,7 @@ export default function Navbar() {
               <Link
                 to={to}
                 className={
-                  "transition-all duration-300 px-4 py-2 rounded-lg text-lg w-full text-right hover:mr-3 hover:font-semibold"
+                  "transition-all duration-300 px-4 py-2 w-full text-righ hover:font-semibold"
                 }
               >
                 {label}
