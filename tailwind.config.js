@@ -14,6 +14,8 @@ export default {
          buttons: "#421B36",
          lightpink: "#FFE6DE",
          darkpink: "#FF8080",
+         primaryColor: '#421B36', 
+         primaryHover: '#6D355C', 
       }
     },
   },
