@@ -46,7 +46,7 @@ export default function DatePick() {
               selected={startDate}
               onChange={date => setStartDate(date)}
               dateFormat="dd-MM-yyyy"
-              className="bg-darkpink text-white rounded-lg px-6 py-3 text-center w-48"
+              className="bg-darkPink text-white rounded-lg px-6 py-3 text-center w-48"
             />
           </div>
           
@@ -56,14 +56,14 @@ export default function DatePick() {
               selected={endDate}
               onChange={date => setEndDate(date)}
               dateFormat="dd-MM-yyyy"
-              className="bg-darkpink text-white rounded-lg px-6 py-3 text-center w-48"
+              className="bg-darkPink text-white rounded-lg px-6 py-3 text-center w-48"
             />
           </div>
         </div>
 
         <button
           onClick={generateMenu}
-          className="bg-buttons text-white px-8 py-3 rounded-lg text-lg mb-12"
+          className="bg-buttons text-white px-8 py-3 rounded-lg text-lg mb-12 hover:bg-buttonsHover"
         >
           Generate Menu
         </button>

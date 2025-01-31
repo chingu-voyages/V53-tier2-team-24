@@ -22,7 +22,7 @@ const Home = () => {
         <p className="text-lg text-gray-600 mb-10">
           For transparent, customized, and nutritious meal plans, fostering healthier and happier workplaces.
         </p>
-        <button className="bg-primaryColor text-xl text-white py-3 px-8 rounded-3xl shadow-md hover:bg-primaryHover transition">Schedule a Menu</button>
+        <button className="bg-buttons text-xl text-white py-3 px-8 rounded-3xl shadow-md hover:bg-buttonsHover transition">Schedule a Menu</button>
       </div>
     </section>
   );
