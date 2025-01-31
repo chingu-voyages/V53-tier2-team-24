@@ -12,10 +12,10 @@ export default {
       colors: {
          background: '#FFF6F3',
          buttons: "#421B36",
-         lightpink: "#FFE6DE",
-         darkpink: "#FF8080",
-         primaryColor: '#421B36', 
-         primaryHover: '#6D355C', 
+         buttonsHover: '#6D355C', 
+         lightPink: "#FFE6DE",
+         darkPink: "#FF8080", 
+         
       }
     },
   },
