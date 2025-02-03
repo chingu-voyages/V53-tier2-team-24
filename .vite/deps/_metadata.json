@@ -1,0 +1,49 @@
+{
+  "hash": "e885ea03",
+  "configHash": "1be03802",
+  "lockfileHash": "0d85e086",
+  "browserHash": "3c27ca22",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "8c3c3987",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "fd8031f9",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "bbf06430",
+      "needsInterop": false
+    },
+    "react-datepicker": {
+      "src": "../../node_modules/react-datepicker/dist/es/index.js",
+      "file": "react-datepicker.js",
+      "fileHash": "a148996e",
+      "needsInterop": false
+    },
+    "framer-motion": {
+      "src": "../../node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "172c9c27",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-YPQ3B4IE": {
+      "file": "chunk-YPQ3B4IE.js"
+    },
+    "chunk-5Q7ARYDQ": {
+      "file": "chunk-5Q7ARYDQ.js"
+    },
+    "chunk-VBQJHASZ": {
+      "file": "chunk-VBQJHASZ.js"
+    }
+  }
+}

@@ -1,7 +1,8 @@
+import React from "react";
 import DatePick from "../components/DatePick";
 const Schedule = () => {
   return (
-  <div class="">
+  <div>
     <DatePick/>
   </div>
   )

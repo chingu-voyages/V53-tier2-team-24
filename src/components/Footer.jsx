@@ -1,4 +1,6 @@
+import React from "react";
 import github from "../images/github.svg";
+
 const Footer = () => {
   return (
     <footer className="flex justify-center items-center w-full text-md text-white bg-gray-900 m-auto">
