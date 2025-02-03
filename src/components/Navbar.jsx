@@ -5,7 +5,7 @@ import Logo from "../assets/logo.png";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="text-grey-800">
+    <div className="text-grey-800 pt-6 px-4 md:pt-14 md:px-28 ">
       <div className="flex items-center justify-between ">
         <Link to="/">
           <img

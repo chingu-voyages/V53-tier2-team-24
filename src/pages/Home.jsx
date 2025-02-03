@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
   return (
-    <section className="bg-pink-50 py-12 flex flex-col md:flex-row-reverse items-center md:justify-between">
+    <section className="py-12 flex flex-col px-4 md:px-28  md:flex-row-reverse items-center md:justify-between">
       <motion.div
         className="mt-8 md:mt-0"
         initial={{ opacity: 0, x: 50 }}
@@ -22,7 +22,7 @@ const Home = () => {
         <p className="text-lg text-gray-600 mb-10">
           For transparent, customized, and nutritious meal plans, fostering healthier and happier workplaces.
         </p>
-        <button className="bg-primaryColor text-xl text-white py-3 px-8 rounded-3xl shadow-md hover:bg-primaryHover transition">Schedule a Menu</button>
+        <button className="bg-buttons text-xl text-white py-3 px-8 rounded-3xl shadow-md hover:bg-buttonsHover transition">Schedule a Menu</button>
       </div>
     </section>
   );
