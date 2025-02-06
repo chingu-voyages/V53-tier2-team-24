@@ -68,6 +68,22 @@ export default function DatePick() {
     );
   };
 
+  useEffect(() => {
+    const today = new Date();
+  
+    const daysUntilMonday = (7 - today.getDay() + 1) % 7;
+    const monday = new Date(today);
+    monday.setDate(today.getDate() + daysUntilMonday);
+  
+    const friday = new Date(monday);
+    friday.setDate(monday.getDate() + 4); 
+  
+    setStartDate(monday);
+    setEndDate(friday);
+    fetchDishes();
+  }, []);
+  
+
 return (
   <div className="max-w-6xl mx-auto p-6">
     <h1 className="text-4xl font-bold text-center text-gray-800 mb-12 mt-[50px]">Schedule A Menu</h1>
