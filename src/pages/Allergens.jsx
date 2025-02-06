@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 
 const Allergens = () =>
   {
-    const tableHeaders = ["id", "Employee Name", "Allergy Type", "Allergen", "Note/Comment"];
+    const tableHeaders = ["id", "Employee Name", "Allergy Type", "Allergen", "Note/Comment", " "];
 
     const [formData, setFormData] = useState({
       id: Date.now().toString(),
@@ -73,7 +73,7 @@ const Allergens = () =>
                   <td className="text-center py-2 px-4 border border-background">{row.allergen}</td>
                   <td className="text-center py-2 px-4 border border-background">{row.note}</td>
                   <td className="text-center py-2 px-4 border border-background">
-                    <button onClick={() => deleteAllergen(row.id)} className="text-gray-800 hover:text-red-800">
+                    <button onClick={() => deleteAllergen(row.id)} className={rowIndex % 2 === 0 ? "text-gray-800 hover:text-red-800" : "text-white hover:text-red-800"}>
                       <FaTrash />
                     </button>
                   </td>

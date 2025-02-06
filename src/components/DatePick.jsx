@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import * as XLSX from "xlsx";
 
 export default function DatePick() {
   const [startDate, setStartDate] = useState(new Date());
@@ -27,14 +30,6 @@ export default function DatePick() {
     const availableDishes = dishes.filter(dish => !usedDishes.includes(dish.name));
     return availableDishes[Math.floor(Math.random() * availableDishes.length)];
   };
-
-  // const defaultMeals = {
-  //   'Monday': 'Rice',
-  //   'Tuesday': 'Tuna Steak',
-  //   'Wednesday': 'Pasta',
-  //   'Thursday': 'Seafood',
-  //   'Friday': 'Kebab', 
-  // };
 
   const generateMenu = () => {
     const menu = [];
@@ -66,6 +61,28 @@ export default function DatePick() {
     setDaysOff(prev => 
       prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day]
     );
+  };
+
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Week Menu", 20, 10);
+    const tableColumn = ["Day", "Meal", "Ingredients", "Calories"];
+    const tableRows = [];
+
+    menuItems.forEach(item => {
+      const rowData = [item.day, item.meal, item.ingredients, item.calories];
+      tableRows.push(rowData);
+    });
+
+    doc.autoTable({ head: [tableColumn], body: tableRows, startY: 20, headStyles: { fillColor: [255, 128, 128] } });
+    doc.save("menu.pdf");
+  };
+
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(menuItems);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Menu");
+    XLSX.writeFile(workbook, "GeneratedMenu.xlsx");
   };
 
 return (
@@ -127,6 +144,23 @@ return (
           </div>
         ))}
       </div>
+
+      {menuItems.length > 0 && (
+        <div className="flex item-center gap-12">
+          <button
+            onClick={exportToPDF}
+            className="bg-buttons text-white px-8 py-3 rounded-lg text-lg mb-12 hover:bg-buttonsHover"
+          >
+            Export as PDF
+          </button>
+          <button
+          onClick={exportToExcel}
+          className="bg-buttons text-white px-8 py-3 rounded-lg text-lg mb-12 hover:bg-buttonsHover"
+        >
+          Export as Excel
+        </button>
+        </div>
+        )}
     </div>
   </div>
 );
