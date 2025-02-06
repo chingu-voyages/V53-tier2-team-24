@@ -155,7 +155,7 @@ return (
 
       <div className="grid grid-cols-3 gap-4 w-full">
         {menuItems.map((item, index) => (
-          <div key={index} className="bg-lightpink p-6 rounded-lg">
+          <div key={index} className="bg-lightPink p-6 rounded-lg">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-bold">{item.day}</h3>
               <p>{item.date.toLocaleDateString()}</p>
