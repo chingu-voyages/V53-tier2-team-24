@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaTrash } from "react-icons/fa";
 
 const Allergens = () =>
   {
@@ -43,6 +44,12 @@ const Allergens = () =>
       console.log(updatedData);
     }
 
+    const deleteAllergen = (id) => {
+      const updatedData = savedData.filter((item) => item.id !== id);
+      setSavedData(updatedData);
+      localStorage.setItem("allergenForm", JSON.stringify(updatedData));
+    };
+
   
     return (
       <div className="flex flex-col  justify-center items-center px-4 md:px-28 pt-16">
@@ -65,6 +72,11 @@ const Allergens = () =>
                   <td className="text-center py-2 px-4 border border-background">{row.allergyType}</td>
                   <td className="text-center py-2 px-4 border border-background">{row.allergen}</td>
                   <td className="text-center py-2 px-4 border border-background">{row.note}</td>
+                  <td className="text-center py-2 px-4 border border-background">
+                    <button onClick={() => deleteAllergen(row.id)} className="text-gray-800 hover:text-red-800">
+                      <FaTrash />
+                    </button>
+                  </td>
                 </tr>
               ))}
               </tbody>
