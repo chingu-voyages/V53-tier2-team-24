@@ -8,23 +8,45 @@ export default function DatePick() {
   const [menuItems, setMenuItems] = useState([]);
   const [dishes, setDishes] = useState([]);
   const [daysOff, setDaysOff] = useState([]);
+  const [allergens, setAllergens] = useState([]);
 
   useEffect(() => {
     fetchDishes();
+    fetchAllergens();
   }, []);
 
   const fetchDishes = async () => {
     try {
       const response = await fetch('https://menus-api.vercel.app/dishes');
       const data = await response.json();
+
+      // const first10Dishes = data.slice(0, 5); //testing the API(ingredients against allergens)
       setDishes(data);
     } catch (error) {
       console.error('Error fetching dishes:', error);
     }
   };
 
+  const fetchAllergens = () => {
+    const savedData = localStorage.getItem("allergenForm");
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      if (Array.isArray(parsedData)) {
+        setAllergens(parsedData.map(item => item.allergen.toLowerCase())); // Store allergens in lowercase for comparison
+      } else {
+        setAllergens([parsedData.allergen.toLowerCase()]);
+      }
+    }
+  };
+
   const getRandomDish = (usedDishes) => {
-    const availableDishes = dishes.filter(dish => !usedDishes.includes(dish.name));
+    const availableDishes = dishes.filter(dish => {
+      //!usedDishes.includes(dish.name));
+      const dishContainsAllergen = dish.ingredients.some(ingredient =>
+        allergens.includes(ingredient.toLowerCase()) 
+      );
+      return !usedDishes.includes(dish.name) && !dishContainsAllergen;
+    })
     return availableDishes[Math.floor(Math.random() * availableDishes.length)];
   };
 
@@ -111,12 +133,13 @@ return (
         </div>
       </div>
 
+      <h1>Mark a day off:</h1>
       <div className="flex gap-4 mb-4">
         {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map(day => (
           <button
             key={day}
             onClick={() => toggleDayOff(day)}
-            className={`px-4 py-2 rounded ${daysOff.includes(day) ? 'bg-red-500' : 'bg-green-500'} text-white`}
+            className={`px-4 py-2 rounded  ${daysOff.includes(day) ? 'bg-red-500' : 'bg-white'} text-black`}
           >
             {day}
           </button>
