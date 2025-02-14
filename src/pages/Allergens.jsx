@@ -1,104 +1,103 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const Allergens = () =>
-  {
-    const tableHeaders = ["id", "Employee Name", "Allergy Type", "Allergen", "Note/Comment", " "];
+const Allergens = () => {
+  const tableHeaders = ["id", "Employee Name", "Allergy Type", "Allergen", "Note/Comment", " "];
 
-    const [formData, setFormData] = useState({
-      id: Date.now().toString(),
-      employeeName: "",
-      allergyType: "",
-      allergen: "",
-      note: "",
-    });
-    const [savedData, setSavedData] = useState([]);
-    console.log(savedData);
+  const [formData, setFormData] = useState({
+    id: Date.now().toString(),
+    employeeName: "",
+    allergyType: "",
+    allergen: "",
+    note: "",
+  });
+  const [savedData, setSavedData] = useState([]);
+  console.log(savedData);
 
 
-    useEffect(() => {
-      const data = localStorage.getItem("allergenForm");
-      if (data) {
-        const parsedData = JSON.parse(data);
-        if (Array.isArray(parsedData)) {
-          setSavedData(parsedData);
-        } else {
-          setSavedData([parsedData]); 
-        }
+  useEffect(() => {
+    const data = localStorage.getItem("allergenForm");
+    if (data) {
+      const parsedData = JSON.parse(data);
+      if (Array.isArray(parsedData)) {
+        setSavedData(parsedData);
       } else {
-        setSavedData([]);
+        setSavedData([parsedData]);
       }
-    }, []);
-
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevData) => {
-        const updatedData = { ...prevData, [name]: value };
-        return updatedData;
-      });
-    };
-
-    function handleSubmit() {
-      const updatedData = savedData ? [...savedData, formData] : [formData];
-      localStorage.setItem("allergenForm", JSON.stringify(updatedData));
-      console.log(updatedData);
+    } else {
+      setSavedData([]);
     }
+  }, []);
 
-    const deleteAllergen = (id) => {
-      const updatedData = savedData.filter((item) => item.id !== id);
-      setSavedData(updatedData);
-      localStorage.setItem("allergenForm", JSON.stringify(updatedData));
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => {
+      const updatedData = { ...prevData, [name]: value };
+      return updatedData;
+    });
+  };
 
-  
-    return (
-      <div className="flex flex-col  justify-center items-center px-4 md:px-28 pt-16">
-        <div className="w-full max-w-5xl">
-          <h2 className="text-2xl font-bold text-gray-800 text-center my-8">Allergens List</h2>
-          <div className="overflow-x-auto">
-            <div className="min-w-[600px]"> 
+  function handleSubmit() {
+    const updatedData = savedData ? [...savedData, formData] : [formData];
+    localStorage.setItem("allergenForm", JSON.stringify(updatedData));
+    console.log(updatedData);
+  }
+
+  const deleteAllergen = (id) => {
+    const updatedData = savedData.filter((item) => item.id !== id);
+    setSavedData(updatedData);
+    localStorage.setItem("allergenForm", JSON.stringify(updatedData));
+  };
+
+
+  return (
+    <div className="flex flex-col  justify-center items-center px-4 md:px-28 pt-16">
+      <div className="w-full max-w-5xl">
+        <h2 className="text-2xl font-bold text-gray-800 text-center my-8">Allergens List</h2>
+        <div className="overflow-x-auto">
+          <div className="min-w-[600px]">
             <table className="w-full border-collapse border border-background">
-  <thead>
-    <tr className="bg-darkPink text-white">
-      {tableHeaders.map((header, index) => (
-        <th key={index} className="py-2 px-4 font-semibold border border-background whitespace-nowrap">
-          {header}
-        </th>
-      ))}
-    </tr>
-  </thead>
-  <tbody>
-    {savedData && savedData.length > 0 ? (
-      savedData.map((row, rowIndex) => (
-        <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-lightPink text-gray-800" : "bg-darkPink text-white"}>
-          <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.id}</td>
-          <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.employeeName}</td>
-          <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.allergyType}</td>
-          <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.allergen}</td>
-          <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.note}</td>
-          <td className="text-center py-2 px-4 border border-background whitespace-nowrap">
-            <button
-              onClick={() => deleteAllergen(row.id)}
-              className={rowIndex % 2 === 0 ? "text-gray-800 hover:text-red-800" : "text-white hover:text-red-800"}
-            >
-              <FaTrash />
-            </button>
-          </td>
-        </tr>
-      ))
-    ) : (
-      <tr>
-        <td colSpan={tableHeaders.length} className="text-center py-4 text-gray-600 italic bg-lightPink">
-          No allergens added yet
-        </td>
-      </tr>
-    )}
-  </tbody>
-</table>
-            </div>
+              <thead>
+                <tr className="bg-darkPink text-white">
+                  {tableHeaders.map((header, index) => (
+                    <th key={index} className="py-2 px-4 font-semibold border border-background whitespace-nowrap">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {savedData && savedData.length > 0 ? (
+                  savedData.map((row, rowIndex) => (
+                    <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-lightPink text-gray-800" : "bg-darkPink text-white"}>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.id}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.employeeName}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.allergyType}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.allergen}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.note}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">
+                        <button
+                          onClick={() => deleteAllergen(row.id)}
+                          className={rowIndex % 2 === 0 ? "text-gray-800 hover:text-red-800" : "text-white hover:text-red-800"}
+                        >
+                          <FaTrash />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={tableHeaders.length} className="text-center py-4 text-gray-600 italic bg-lightPink">
+                      No allergens added yet
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="my-20 w-full max-w-5xl">
+      </div>
+      <div className="my-20 w-full max-w-5xl">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Add Allergen</h2>
         <form className="flex flex-col text-gray-800">
 
@@ -146,16 +145,16 @@ const Allergens = () =>
               className="w-full p-3 rounded-md bg-lightPink focus:outline-none"
             ></textarea>
           </div>
-          <button 
-          onClick={handleSubmit}
-          className="bg-buttons text-white px-8 py-3 rounded-lg text-lg mb-12 self-center hover:bg-buttonsHover">
+          <button
+            onClick={handleSubmit}
+            className="bg-buttons text-white px-8 py-3 rounded-lg text-lg mb-12 self-center hover:bg-buttonsHover">
             Add Allergen
           </button>
         </form>
-        
+
       </div>
-      </div>
-    );
+    </div>
+  );
 };
 
 export default Allergens;

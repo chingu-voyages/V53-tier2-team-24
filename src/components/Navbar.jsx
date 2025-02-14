@@ -60,10 +60,9 @@ export default function Navbar() {
               <NavLink
                 to={to}
                 className={({ isActive }) =>
-                  `transition-colors font-semibold duration-300 px-4 py-2 ${
-                    isActive
-                      ? " text-gray-900" // Active state
-                      : " text-gray-600 hover:text-gray-900"
+                  `transition-colors font-semibold duration-300 px-4 py-2 ${isActive
+                    ? " text-gray-900" // Active state
+                    : " text-gray-600 hover:text-gray-900"
                   }`
                 }
               >
