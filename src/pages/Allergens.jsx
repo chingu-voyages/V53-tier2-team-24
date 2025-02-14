@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 
 const Allergens = () =>
   {
-    const tableHeaders = ["id", "Employee Name", "Allergy Type", "Allergen", "Note/Comment"];
+    const tableHeaders = ["id", "Employee Name", "Allergy Type", "Allergen", "Note/Comment", " "];
 
     const [formData, setFormData] = useState({
       id: Date.now().toString(),
@@ -56,31 +56,38 @@ const Allergens = () =>
         <div className="w-full max-w-5xl">
           <h2 className="text-2xl font-bold text-gray-800 text-center my-8">Allergens List</h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-background">
-              <thead>
-                <tr className="bg-darkPink text-white">
-                  {tableHeaders.map((header, index) => (
-                    <th key={index} className="py-2 px-4 font-semibold border border-background">{header}</th>
+            <div className="min-w-[600px]"> {/* Ensures the table has a minimum width */}
+              <table className="w-full border-collapse border border-background">
+                <thead>
+                  <tr className="bg-darkPink text-white">
+                    {tableHeaders.map((header, index) => (
+                      <th key={index} className="py-2 px-4 font-semibold border border-background whitespace-nowrap">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {savedData && savedData.map((row, rowIndex) => (
+                    <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-lightPink text-gray-800" : "bg-darkPink text-white"}>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.id}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.employeeName}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.allergyType}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.allergen}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">{row.note}</td>
+                      <td className="text-center py-2 px-4 border border-background whitespace-nowrap">
+                        <button
+                          onClick={() => deleteAllergen(row.id)}
+                          className={rowIndex % 2 === 0 ? "text-gray-800 hover:text-red-800" : "text-white hover:text-red-800"}
+                        >
+                          <FaTrash />
+                        </button>
+                      </td>
+                    </tr>
                   ))}
-                </tr>
-              </thead>
-              <tbody>
-              {savedData && savedData.map((row, rowIndex) => (
-                <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-lightPink text-gray-800" : "bg-darkPink text-white"}>
-                  <td className="text-center py-2 px-4 border border-background">{row.id}</td>
-                  <td className="text-center py-2 px-4 border border-background">{row.employeeName}</td>
-                  <td className="text-center py-2 px-4 border border-background">{row.allergyType}</td>
-                  <td className="text-center py-2 px-4 border border-background">{row.allergen}</td>
-                  <td className="text-center py-2 px-4 border border-background">{row.note}</td>
-                  <td className="text-center py-2 px-4 border border-background">
-                    <button onClick={() => deleteAllergen(row.id)} className="text-gray-800 hover:text-red-800">
-                      <FaTrash />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div className="my-20 w-full max-w-5xl">
@@ -98,7 +105,7 @@ const Allergens = () =>
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 gap-4 mb-4">
             <div>
               <label className="block font-semibold mb-1">Allergy Type</label>
               <input
