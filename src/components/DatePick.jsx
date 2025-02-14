@@ -13,13 +13,22 @@ export default function DatePick() {
   useEffect(() => {
     fetchDishes();
     fetchAllergens();
+
+    const savedMenu = localStorage.getItem("generatedMenu");
+    if (savedMenu) {
+      const menu = JSON.parse(savedMenu);
+      const updatedMenu = menu.map(item => ({
+        ...item,
+        date: new Date(item.date), 
+      }));
+      setMenuItems(updatedMenu);
+    }
   }, []);
 
   const fetchDishes = async () => {
     try {
       const response = await fetch('https://menus-api.vercel.app/dishes');
       const data = await response.json();
-
       // const first10Dishes = data.slice(0, 5); //testing the API(ingredients against allergens)
       setDishes(data);
     } catch (error) {
@@ -32,7 +41,7 @@ export default function DatePick() {
     if (savedData) {
       const parsedData = JSON.parse(savedData);
       if (Array.isArray(parsedData)) {
-        setAllergens(parsedData.map(item => item.allergen.toLowerCase())); // Store allergens in lowercase for comparison
+        setAllergens(parsedData.map(item => item.allergen.toLowerCase()));
       } else {
         setAllergens([parsedData.allergen.toLowerCase()]);
       }
@@ -81,6 +90,8 @@ export default function DatePick() {
     }
       currentDate.setDate(currentDate.getDate() + 1);
     }
+    localStorage.setItem("generatedMenu", JSON.stringify(menu));
+
     setMenuItems(menu);
   };
 
