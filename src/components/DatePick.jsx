@@ -128,7 +128,7 @@ return (
     <h1 className="text-2xl md:text-3xl font-bold text-gray-800 text-center my-8">Schedule A Menu</h1>
     
     <div className="flex flex-col items-center gap-8">
-      <div className="flex gap-12">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-12">
         <div className="flex flex-col">
           <label className="text-gray-700 mb-2 text-lg">From</label>
           <DatePicker
