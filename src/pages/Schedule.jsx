@@ -16,6 +16,15 @@ const Schedule = () => {
   useEffect(() => {
     fetchDishes();
     fetchAllergens();
+    const savedMenu = localStorage.getItem("generatedMenu");
+    if (savedMenu) {
+      const menu = JSON.parse(savedMenu);
+      const updatedMenu = menu.map(item => ({
+        ...item,
+        date: new Date(item.date), 
+      }));
+      setMenuItems(updatedMenu);
+    }
   }, []);
 
   const fetchDishes = async () => {
@@ -76,6 +85,7 @@ const Schedule = () => {
       }
       currentDate.setDate(currentDate.getDate() + 1);
     }
+    localStorage.setItem("generatedMenu", JSON.stringify(menu));
     setMenuItems(menu);
   };
 

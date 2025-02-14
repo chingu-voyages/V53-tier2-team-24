@@ -4,15 +4,16 @@ import { FaTrash } from "react-icons/fa";
 const Allergens = () => {
   const tableHeaders = ["id", "Employee Name", "Allergy Type", "Allergen", "Note/Comment", " "];
 
-  const [formData, setFormData] = useState({
-    id: Date.now().toString(),
-    employeeName: "",
-    allergyType: "",
-    allergen: "",
-    note: "",
-  });
-  const [savedData, setSavedData] = useState([]);
-  console.log(savedData);
+    const [formData, setFormData] = useState({
+      id: Date.now().toString(),
+      employeeName: "",
+      allergyType: "",
+      allergen: "",
+      note: "",
+    });
+    const [savedData, setSavedData] = useState([]);
+    console.log(savedData);
+    const [showModal, setShowModal] = useState(false);
 
 
   useEffect(() => {
@@ -24,24 +25,35 @@ const Allergens = () => {
       } else {
         setSavedData([parsedData]);
       }
-    } else {
-      setSavedData([]);
-    }
-  }, []);
+    }}, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => {
-      const updatedData = { ...prevData, [name]: value };
-      return updatedData;
-    });
-  };
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevData) => {
+        const updatedData = { ...prevData, [name]: value };
+        return updatedData;
+      });
+    };
 
-  function handleSubmit() {
-    const updatedData = savedData ? [...savedData, formData] : [formData];
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (!formData.employeeName || !formData.allergen) {
+        setShowModal(true);
+        return;
+      }
+
+    const updatedData = [formData, ...savedData ];
+    setSavedData(updatedData);
     localStorage.setItem("allergenForm", JSON.stringify(updatedData));
-    console.log(updatedData);
-  }
+
+    setFormData({
+      id: Date.now().toString(),
+      employeeName: "",
+      allergyType: "",
+      allergen: "",
+      note: "",
+    });
+    };
 
   const deleteAllergen = (id) => {
     const updatedData = savedData.filter((item) => item.id !== id);
@@ -102,13 +114,14 @@ const Allergens = () => {
         <form className="flex flex-col text-gray-800">
 
           <div className="mb-4">
-            <label className="block font-semibold mb-1">Employee Name</label>
+            <label className="block font-semibold mb-1">Employee Name <span className="text-red-500">*</span></label>
             <input
               type="text"
               name="employeeName"
               value={formData.employeeName}
               onChange={handleChange}
               className="w-full p-3 rounded-md bg-lightPink focus:outline-none"
+              required
             />
           </div>
 
@@ -124,13 +137,14 @@ const Allergens = () => {
               />
             </div>
             <div>
-              <label className="block font-semibold mb-1">Allergen</label>
+              <label className="block font-semibold mb-1">Allergen <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 name="allergen"
                 value={formData.allergen}
                 onChange={handleChange}
                 className="w-full p-3 rounded-md bg-lightPink focus:outline-none"
+                required
               />
             </div>
           </div>
@@ -151,10 +165,24 @@ const Allergens = () => {
             Add Allergen
           </button>
         </form>
-
       </div>
-    </div>
-  );
+
+      {showModal && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-center">Error</h3>
+            <p className="text-center my-4">Fill out all of the required fields in order to submit the form</p>
+            <button
+              onClick={closeModal}
+              className="bg-buttons text-white px-6 py-2 rounded-md mt-4 hover:bg-buttonsHover"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      </div>
+    );
 };
 
 export default Allergens;
