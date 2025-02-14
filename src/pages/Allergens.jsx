@@ -61,6 +61,8 @@ const Allergens = () => {
     localStorage.setItem("allergenForm", JSON.stringify(updatedData));
   };
 
+  const closeModal = () => setShowModal(false);
+
 
   return (
     <div className="flex flex-col  justify-center items-center px-4 md:px-28 pt-16">
