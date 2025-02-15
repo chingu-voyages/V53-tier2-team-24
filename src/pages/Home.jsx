@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import HeroImage from '../assets/hero-image.png';
 import { motion } from 'framer-motion';
 
@@ -22,7 +23,9 @@ const Home = () => {
         <p className="text-lg text-gray-600 mb-10">
           For transparent, customized, and nutritious meal plans, fostering healthier and happier workplaces.
         </p>
-        <button className="bg-buttons text-xl text-white py-3 px-8 rounded-3xl shadow-md hover:bg-buttonsHover transition">Schedule a Menu</button>
+        <Link to="/schedule">
+          <button className="bg-buttons text-xl text-white py-3 px-8 rounded-3xl shadow-md hover:bg-buttonsHover transition">Schedule a Menu</button>
+        </Link>
       </div>
     </section>
   );
